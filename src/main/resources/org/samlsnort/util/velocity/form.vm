@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<body onload="document.forms[0].submit()">
+		<noscript>
+			<p>
+				<strong>Note:</strong>
+				Since your browser does not support JavaScript, you must
+				press the Continue button once to proceed.
+			</p>
+		</noscript>
+		<form method="post" action="$destination">
+			#if($relayState)
+			<input type="hidden" name="RelayState" value="$relayState"/>
+			#end
+			<input type="hidden" name="SAMLResponse" value="$encodedResponse"/>
+			#if($signature)
+			<input type="hidden" name="Signature" value="$signature"/>
+			#end
+			#if($sigAlg)
+			<input type="hidden" name="SigAlg" value="$sigAlg"/>
+			#end
+			<noscript>
+				<div>
+					<input type="submit" value="Continue"/>
+				</div>
+			</noscript>
+		</form>
+	</body>
+</html>

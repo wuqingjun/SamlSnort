@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport" printOrder="Horizontal" pageWidth="555" pageHeight="730" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.2100000000000133"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="111"/>
+	<style name="default" isDefault="true" fontName="SansSerif" fontSize="8"/>
+	<style name="detail" style="default" hAlign="Left" vAlign="Top" isBlankWhenNull="true">
+		<box>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="header" style="default">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{testSuccessful}]]></conditionExpression>
+			<style forecolor="#007934"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[!$F{testSuccessful}]]></conditionExpression>
+			<style mode="Transparent" forecolor="#E00019"/>
+		</conditionalStyle>
+	</style>
+	<style name="expectedResult" style="detail">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{testSuccessful}.booleanValue()!=$F{expectSuccess}.booleanValue()]]></conditionExpression>
+			<style forecolor="#E00019"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="base64Valid" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[base64Valid]]></fieldDescription>
+	</field>
+	<field name="endTime" class="org.joda.time.DateTime">
+		<fieldDescription><![CDATA[endTime]]></fieldDescription>
+	</field>
+	<field name="testSuccessful" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[testSuccessful]]></fieldDescription>
+	</field>
+	<field name="deflatedValid" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[deflatedValid]]></fieldDescription>
+	</field>
+	<field name="startTime" class="org.joda.time.DateTime">
+		<fieldDescription><![CDATA[startTime]]></fieldDescription>
+	</field>
+	<field name="attributes" class="java.util.List">
+		<fieldDescription><![CDATA[samlResponseData.attributes]]></fieldDescription>
+	</field>
+	<field name="audience" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.audience]]></fieldDescription>
+	</field>
+	<field name="authnContextClassRef" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.authnContextClassRef]]></fieldDescription>
+	</field>
+	<field name="authnInstant" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.authnInstant]]></fieldDescription>
+	</field>
+	<field name="canocializationMethodAlgorithm" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.canocializationMethodAlgorithm]]></fieldDescription>
+	</field>
+	<field name="conditionNotBefore" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.conditionNotBefore]]></fieldDescription>
+	</field>
+	<field name="conditionNotOnOrAfter" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.conditionNotOnOrAfter]]></fieldDescription>
+	</field>
+	<field name="certificateAlias" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.certificateAlias]]></fieldDescription>
+	</field>
+	<field name="destination" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.destination]]></fieldDescription>
+	</field>
+	<field name="inResponseTo" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.inResponseTo]]></fieldDescription>
+	</field>
+	<field name="issueInstant" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.issueInstant]]></fieldDescription>
+	</field>
+	<field name="issuer" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.issuer]]></fieldDescription>
+	</field>
+	<field name="sign" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[samlResponseData.sign]]></fieldDescription>
+	</field>
+	<field name="signatureMethodAlgorithm" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.signatureMethodAlgorithm]]></fieldDescription>
+	</field>
+	<field name="statusCodeValue" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.statusCodeValue]]></fieldDescription>
+	</field>
+	<field name="subjectFormat" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectFormat]]></fieldDescription>
+	</field>
+	<field name="subjectInResponseTo" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectInResponseTo]]></fieldDescription>
+	</field>
+	<field name="subjectLocalityAddress" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectLocalityAddress]]></fieldDescription>
+	</field>
+	<field name="subjectLocalityDNSName" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectLocalityDNSName]]></fieldDescription>
+	</field>
+	<field name="subjectNotOnOrAfter" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.subjectNotOnOrAfter]]></fieldDescription>
+	</field>
+	<field name="subjectRecipient" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectRecipient]]></fieldDescription>
+	</field>
+	<field name="subjectValue" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.subjectValue]]></fieldDescription>
+	</field>
+	<field name="subjectNotBefore" class="java.lang.Integer">
+		<fieldDescription><![CDATA[samlResponseData.subjectNotBefore]]></fieldDescription>
+	</field>
+	<field name="expectSuccess" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[expectSuccess]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="resultPageText" class="java.lang.String">
+		<fieldDescription><![CDATA[resultPageText]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="assertionIssuer" class="java.lang.String">
+		<fieldDescription><![CDATA[samlResponseData.assertionIssuer]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="730" splitType="Stretch">
+			<textField isBlankWhenNull="true" bookmarkLevel="2">
+				<reportElement style="header" x="6" y="11" width="520" height="24"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name} + " " + ($F{testSuccessful}!=null?(($F{testSuccessful}?"(Successful)":"(Failed)")+($F{expectSuccess}.booleanValue()!=$F{testSuccessful}.booleanValue()?" NOT EXPECTED":"")):"")]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$F{name} + " " + ($F{testSuccessful}!=null?(($F{testSuccessful}?"(Successful)":"(Failed)")+($F{expectSuccess}.booleanValue()!=$F{testSuccessful}.booleanValue()?" NOT EXPECTED":"")):"")]]></anchorNameExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="40" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Expected Result]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="expectedResult" x="136" y="40" width="390" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{expectSuccess}==true?"Success":"Failure"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="64" width="130" height="45"/>
+				<textElement/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="136" y="64" width="390" height="45"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="238" width="141" height="12"/>
+				<textElement/>
+				<text><![CDATA[Destination]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="238" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{destination}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="250" width="141" height="12"/>
+				<textElement/>
+				<text><![CDATA[In Response To]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="250" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{inResponseTo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="262" width="141" height="12"/>
+				<textElement/>
+				<text><![CDATA[Issue Instant]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="262" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{issueInstant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="274" width="141" height="12"/>
+				<textElement/>
+				<text><![CDATA[Issuer]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="274" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{issuer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="286" width="141" height="12"/>
+				<textElement/>
+				<text><![CDATA[Status Code Value]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="286" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{statusCodeValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="352" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Canocialization Method Alogrithm]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="352" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{canocializationMethodAlgorithm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="364" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Signature Method Algorithm]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="364" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{signatureMethodAlgorithm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="376" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Is Signed]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="376" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Boolean"><![CDATA[$F{sign}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="388" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Certificate Alias]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="388" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{certificateAlias}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="421" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Format]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="421" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectFormat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="433" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Value]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="433" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="445" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Not Before]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="445" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{subjectNotBefore}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="457" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Not On Or After]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="457" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{subjectNotOnOrAfter}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="482" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject In Response To]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="482" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectInResponseTo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="515" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Condition Not Before]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="515" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{conditionNotBefore}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="527" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Condition Not On Or After]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="527" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{conditionNotOnOrAfter}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="539" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Audience]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="539" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{audience}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="572" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Authn Instant]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="572" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{authnInstant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="584" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Authn Context Class Ref]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="584" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{authnContextClassRef}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="596" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Locality Address]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="596" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectLocalityAddress}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="608" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Locality DNS Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="608" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectLocalityDNSName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="17" y="641" width="520" height="89"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{attributes}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="469" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Subject Recipient]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="469" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subjectRecipient}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="6" y="109" width="130" height="95"/>
+				<textElement/>
+				<text><![CDATA[Result]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="136" y="109" width="390" height="95"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{resultPageText}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="225" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saml Response Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="detail" x="6" y="52" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<textField pattern="HH.mm.ss">
+				<reportElement style="detail" x="136" y="52" width="40" height="12"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{startTime}.toDate()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement style="detail" x="181" y="52" width="345" height="12"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{endTime}.toDate()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="17" y="319" width="130" height="12"/>
+				<textElement/>
+				<text><![CDATA[Assertion Issuer]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="147" y="319" width="390" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{assertionIssuer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="detail" x="176" y="52" width="5" height="12"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="306" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assertion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="339" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="408" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="502" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Condition]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="559" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AuthnStatement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="628" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Attributes]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
