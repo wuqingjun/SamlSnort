@@ -5,3 +5,6 @@
 *.war
 *.ear
 /target/
+!lib/*
+#!lib/*
+!lib/swt/*
