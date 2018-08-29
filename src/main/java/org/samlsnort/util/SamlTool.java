@@ -82,14 +82,14 @@ import org.w3c.dom.Element;
 
 public class SamlTool {
 
-	private static final Logger LOGGER = Logger.getLogger(SamlTool.class
+	static final Logger LOGGER = Logger.getLogger(SamlTool.class
 			.getName());
 
-	private static BasicParserPool basicParserPool;
-	private static SecureRandomIdentifierGenerator GENERATOR;
-	private static SamlResponseData samlResponseData;
-	private static AuthnRequest authnRequest;
-	private static DateTime startTime;
+	static BasicParserPool basicParserPool;
+	static SecureRandomIdentifierGenerator GENERATOR;
+	static SamlResponseData samlResponseData;
+	static AuthnRequest authnRequest;
+	static DateTime startTime;
 	static {
 
 		try {
@@ -100,7 +100,7 @@ public class SamlTool {
 			// Get parser pool manager
 			basicParserPool = new BasicParserPool();
 			basicParserPool.setNamespaceAware(true);
-			basicParserPool.setXincludeAware(true);
+			basicParserPool.setXincludeAware(false);
 		} catch (Exception e) {
 			LOGGER.log(Level.WARNING, "Error while initializing Saml Tool.", e);
 		}
@@ -198,7 +198,7 @@ public class SamlTool {
 		return writer.getBuffer().toString();
 	}
 
-	private static Response createResponse() throws Exception {
+	public static Response createResponse() throws Exception {
 
 		Response response = create(Response.DEFAULT_ELEMENT_NAME);
 
@@ -229,7 +229,7 @@ public class SamlTool {
 		return response;
 	}
 
-	private static Issuer createIssuer(String value) {
+	public static Issuer createIssuer(String value) {
 		if (value != null && value.length() > 0) {
 			Issuer issuer = create(Issuer.DEFAULT_ELEMENT_NAME);
 			issuer.setValue(value);
@@ -240,7 +240,7 @@ public class SamlTool {
 		}
 	}
 
-	private static Status createStatus() {
+	public static Status createStatus() {
 		Status status = null;
 
 		if (samlResponseData.getStatusCodeValue() != null
@@ -253,7 +253,7 @@ public class SamlTool {
 		return status;
 	}
 
-	private static Assertion createAssertion() throws Exception {
+	static Assertion createAssertion() throws Exception {
 
 		Assertion assertion = create(Assertion.DEFAULT_ELEMENT_NAME);
 		assertion.setID(GENERATOR.generateIdentifier());
@@ -287,7 +287,7 @@ public class SamlTool {
 		return assertion;
 	}
 
-	private static AttributeStatement createAttributeStatement() {
+	static AttributeStatement createAttributeStatement() {
 
 		AttributeStatement attributeStatement = create(AttributeStatement.DEFAULT_ELEMENT_NAME);
 
@@ -313,7 +313,7 @@ public class SamlTool {
 		return attributeStatement;
 	}
 
-	private static AuthnStatement createAuthnStatement() {
+	static AuthnStatement createAuthnStatement() {
 		AuthnStatement authnStatement = null;
 		AuthnContext authnContext = null;
 		SubjectLocality subjectLocality = null;
@@ -365,7 +365,7 @@ public class SamlTool {
 		return authnStatement;
 	}
 
-	private static Conditions createCondition() {
+	static Conditions createCondition() {
 		Conditions conditions = null;
 		AudienceRestriction audienceRestriction = null;
 		if (samlResponseData.getAudience() != null
@@ -400,7 +400,7 @@ public class SamlTool {
 		return conditions;
 	}
 
-	private static Signature createSignature() throws Exception {
+	public static Signature createSignature() throws Exception {
 		ElementProxy.setDefaultPrefix("http://www.w3.org/2000/09/xmldsig#", "");
 
 		Signature signature = null;
@@ -437,7 +437,7 @@ public class SamlTool {
 		return signature;
 	}
 
-	private static NameID createNameID(String value, String format) {
+	static NameID createNameID(String value, String format) {
 		if (value != null && value.length() > 0 && format != null
 				&& format.length() > 0) {
 			NameID nameID = create(NameID.DEFAULT_ELEMENT_NAME);
@@ -448,7 +448,7 @@ public class SamlTool {
 			return null;
 	}
 
-	private static Subject createSubject() {
+	static Subject createSubject() {
 		Subject subject = null;
 
 		NameID nameID = createNameID(samlResponseData.getSubjectValue(),
@@ -499,18 +499,18 @@ public class SamlTool {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T extends XMLObjectBuilder> T getXMLObjectBuilder(
+	static <T extends XMLObjectBuilder> T getXMLObjectBuilder(
 			QName typeName) {
 		return (T) Configuration.getBuilderFactory().getBuilder(typeName);
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T extends XMLObject> T create(QName qname) {
+	static <T extends XMLObject> T create(QName qname) {
 		return (T) getXMLObjectBuilder(qname).buildObject(qname);
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T extends XMLObject> T create(QName qname, String prefix) {
+	static <T extends XMLObject> T create(QName qname, String prefix) {
 		return (T) getXMLObjectBuilder(qname).buildObject(
 				qname.getNamespaceURI(), qname.getLocalPart(), prefix);
 	}

@@ -88,7 +88,7 @@
                         </groupId>
                         <artifactId>maven-install-plugin</artifactId>
                         <configuration>
-                            <file>${basedir}\lib\DJNativeSwing-SWT.jar
+                            <file>${basedir}\lib\dj-nativeswing-swt-1.0.2.jar
                             </file>
                             <groupId>chrriis</groupId>
                             <artifactId>DJNativeSwing-SWT</artifactId>
@@ -109,7 +109,7 @@
                         <artifactId>maven-install-plugin</artifactId>
                         <configuration>
                             <file>
-                                ${basedir}\lib\syntaxhighlighter\SyntaxHighlighter_1.5.1.zip
+                                ${basedir}\lib\syntaxhighlighter\SyntaxHighlighter_1.5.1.jar
                             </file>
                             <groupId>dp</groupId>
                             <artifactId>SyntaxHighlighter</artifactId>
@@ -289,6 +289,7 @@
             <artifactId>jna</artifactId>
             <version>3.0.9</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.eclipse.swt</groupId>
             <artifactId>swt</artifactId>
@@ -298,16 +299,28 @@
             <groupId>chrriis</groupId>
             <artifactId>DJNativeSwing</artifactId>
             <version>1.0.0</version>
+        </dependency> -->
+
+        <dependency>
+            <groupId>chrriis</groupId>
+            <artifactId>DJNativeSwing</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\DJNativeSwing.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>chrriis</groupId>
             <artifactId>DJNativeSwing-SWT</artifactId>
             <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\DJNativeSwing-SWT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>dp</groupId>
             <artifactId>SyntaxHighlighter</artifactId>
             <version>1.5.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\syntaxhighlighter\SyntaxHighlighter_1.5.1.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
